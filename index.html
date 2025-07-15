@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会计专业认知实习</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af', // 深蓝色作为主色调，体现专业性和可信度
+            secondary: '#3b82f6', // 浅蓝色作为辅助色
+            accent: '#f59e0b', // 橙色作为强调色，用于重要按钮和提示
+            neutral: {
+              100: '#f3f4f6',
+              200: '#e5e7eb',
+              700: '#374151',
+              800: '#1f2937',
+              900: '#111827'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+      .hover-scale:hover {
+        transform: scale(1.03);
+      }
+      .card-shadow {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    }
+  </style>
+</head>
+<body class="bg-neutral-100 font-sans text-neutral-800">
+  <!-- 导航栏 -->
+  <header id="header" class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-sm z-50 transition-all duration-300 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-2">
+        <i class="fa fa-calculator text-primary text-2xl"></i>
+        <span class="text-xl font-bold text-primary">会计专业认知实习</span>
+      </a>
+      
+      <!-- 桌面导航 -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#home" class="font-medium text-neutral-700 hover:text-primary transition-colors">首页</a>
+        <a href="#courses" class="font-medium text-neutral-700 hover:text-primary transition-colors">课程内容</a>
+        <a href="#resources" class="font-medium text-neutral-700 hover:text-primary transition-colors">学习资源</a>
+        <a href="#about" class="font-medium text-neutral-700 hover:text-primary transition-colors">关于实习</a>
+      </nav>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="menu-toggle" class="md:hidden text-neutral-700 focus:outline-none">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端导航菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-neutral-200">
+      <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+        <a href="#home" class="py-2 font-medium text-neutral-700 hover:text-primary transition-colors">首页</a>
+        <a href="#courses" class="py-2 font-medium text-neutral-700 hover:text-primary transition-colors">课程内容</a>
+        <a href="#resources" class="py-2 font-medium text-neutral-700 hover:text-primary transition-colors">学习资源</a>
+        <a href="#about" class="py-2 font-medium text-neutral-700 hover:text-primary transition-colors">关于实习</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section id="home" class="pt-28 pb-20 bg-gradient-to-br from-primary to-secondary text-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-shadow mb-6">
+            会计专业<br>认知实习
+          </h1>
+          <p class="text-xl text-white/90 mb-8 max-w-lg">
+            通过实践探索会计领域，掌握专业技能，开启职业发展新篇章。
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#courses" class="px-6 py-3 bg-accent hover:bg-accent/90 text-white rounded-lg font-medium transition-all hover:shadow-lg">
+              开始学习 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+            <a href="#about" class="px-6 py-3 bg-white/20 hover:bg-white/30 text-white rounded-lg font-medium transition-all backdrop-blur-sm">
+              了解更多 <i class="fa fa-info-circle ml-2"></i>
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <div class="relative w-full max-w-md">
+            <div class="absolute -inset-1 bg-gradient-to-r from-primary/50 to-secondary/50 rounded-xl blur opacity-70 animate-pulse"></div>
+            <div class="relative bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+              <img src="https://picsum.photos/seed/accounting/600/400" alt="会计实习场景" class="w-full h-auto rounded-lg shadow-lg">
+              <div class="absolute -bottom-4 -right-4 bg-accent text-white px-4 py-2 rounded-lg shadow-lg">
+                <i class="fa fa-calendar mr-2"></i> 8次课
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 课程概览 -->
+  <section id="courses" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-neutral-800 mb-4">课程内容</h2>
+        <p class="text-lg text-neutral-600 max-w-2xl mx-auto">探索会计专业核心知识，从基础到实践，全面提升专业素养</p>
+      </div>
+      
+      <!-- 课程列表 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 课程卡片 1 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-48 bg-primary/10 relative">
+            <img src="https://picsum.photos/seed/accounting1/600/400" alt="走进企业生命体" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+              第一次课
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">走进企业"生命体"</h3>
+            <p class="text-neutral-600 mb-4">了解企业的组织结构、运营模式和财务体系，建立对企业整体的认知。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-neutral-500"><i class="fa fa-clock-o mr-1"></i> 4课时</span>
+              <a href="#" class="text-primary font-medium hover:underline">查看详情 <i class="fa fa-angle-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 课程卡片 2 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-48 bg-primary/10 relative">
+            <img src="https://picsum.photos/seed/accounting2/600/400" alt="会计语言解码" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+              第二次课
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">会计语言解码</h3>
+            <p class="text-neutral-600 mb-4">学习会计基本概念、原则和方法，掌握财务报表的编制与分析。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-neutral-500"><i class="fa fa-clock-o mr-1"></i> 6课时</span>
+              <a href="#lesson2" class="text-primary font-medium hover:underline">查看详情 <i class="fa fa-angle-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 课程卡片 3 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-48 bg-primary/10 relative">
+            <img src="https://picsum.photos/seed/accounting3/600/400" alt="财务部探秘" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+              第三次课
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">财务部探秘</h3>
+            <p class="text-neutral-600 mb-4">深入了解企业财务部门的职责、工作流程和内部控制体系。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-neutral-500"><i class="fa fa-clock-o mr-1"></i> 5课时</span>
+              <a href="#" class="text-primary font-medium hover:underline">查看详情 <i class="fa fa-angle-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 课程卡片 4 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-48 bg-primary/10 relative">
+            <img src="https://picsum.photos/seed/accounting4/600/400" alt="数字背后的真相" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+              第四次课
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">数字背后的真相</h3>
+            <p class="text-neutral-600 mb-4">学习财务数据分析方法，揭示财务数据背后的经济含义和业务逻辑。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-neutral-500"><i class="fa fa-clock-o mr-1"></i> 5课时</span>
+              <a href="#" class="text-primary font-medium hover:underline">查看详情 <i class="fa fa-angle-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 课程卡片 5 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-48 bg-primary/10 relative">
+            <img src="https://picsum.photos/seed/accounting5/600/400" alt="业财融合实战" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+              第五次课
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">业财融合实战</h3>
+            <p class="text-neutral-600 mb-4">掌握业务与财务的结合方法，提升财务对业务的支持能力和决策价值。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-neutral-500"><i class="fa fa-clock-o mr-1"></i> 6课时</span>
+              <a href="#" class="text-primary font-medium hover:underline">查看详情 <i class="fa fa-angle-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 课程卡片 6 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-48 bg-primary/10 relative">
+            <img src="https://picsum.photos/seed/accounting6/600/400" alt="会计科技革命" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+              第六次课
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">会计科技革命</h3>
+            <p class="text-neutral-600 mb-4">了解会计领域的最新技术发展，如人工智能、区块链在财务工作中的应用。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-neutral-500"><i class="fa fa-clock-o mr-1"></i> 4课时</span>
+              <a href="#" class="text-primary font-medium hover:underline">查看详情 <i class="fa fa-angle-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 课程卡片 7 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-48 bg-primary/10 relative">
+            <img src="https://picsum.photos/seed/accounting7/600/400" alt="真实战场" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+              第七次课
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">真实战场</h3>
+            <p class="text-neutral-600 mb-4">通过实际案例分析和模拟操作，应用所学知识解决实际财务问题。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-neutral-500"><i class="fa fa-clock-o mr-1"></i> 7课时</span>
+              <a href="#" class="text-primary font-medium hover:underline">查看详情 <i class="fa fa-angle-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 课程卡片 8 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-48 bg-primary/10 relative">
+            <img src="https://picsum.photos/seed/accounting8/600/400" alt="我的会计职业启动计划" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+              第八次课
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">我的会计职业启动计划</h3>
+            <p class="text-neutral-600 mb-4">制定个人职业发展规划，了解会计行业的职业路径和发展机会。</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-neutral-500"><i class="fa fa-clock-o mr-1"></i> 5课时</span>
+              <a href="#" class="text-primary font-medium hover:underline">查看详情 <i class="fa fa-angle-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第二课详情 -->
+  <section id="lesson2" class="py-20 bg-neutral-100">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-neutral-800 mb-4">第二次课：会计语言解码</h2>
+        <p class="text-lg text-neutral-600 max-w-2xl mx-auto">深入学习会计基本概念和方法，掌握财务报表的编制与分析</p>
+      </div>
+      
+      <!-- 第二课工具列表 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 工具卡片 1 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-40 bg-secondary/10 flex items-center justify-center">
+            <i class="fa fa-coffee text-6xl text-secondary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">奶茶店财务要素匹配系统</h3>
+            <p class="text-neutral-600 mb-4">通过模拟奶茶店的经营活动，学习资产、负债、所有者权益等财务要素的匹配关系。</p>
+            <a href="#" class="inline-flex items-center text-secondary font-medium hover:underline">
+              进入系统 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 工具卡片 2 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-40 bg-secondary/10 flex items-center justify-center">
+            <i class="fa fa-calculator text-6xl text-secondary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">借贷记账法学习助手</h3>
+            <p class="text-neutral-600 mb-4">通过互动练习，掌握借贷记账法的基本规则和应用技巧，理解会计分录的编制方法。</p>
+            <a href="#" class="inline-flex items-center text-secondary font-medium hover:underline">
+              开始学习 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 工具卡片 3 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-40 bg-secondary/10 flex items-center justify-center">
+            <i class="fa fa-sitemap text-6xl text-secondary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">会计业务关系演示</h3>
+            <p class="text-neutral-600 mb-4">直观展示各类会计业务之间的关系和影响，帮助理解会计信息系统的运作原理。</p>
+            <a href="#" class="inline-flex items-center text-secondary font-medium hover:underline">
+              查看演示 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 工具卡片 4 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-40 bg-secondary/10 flex items-center justify-center">
+            <i class="fa fa-line-chart text-6xl text-secondary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">会计分析诊断器</h3>
+            <p class="text-neutral-600 mb-4">学习如何通过财务数据分析企业经营状况，识别潜在问题并提出改进建议。</p>
+            <a href="#" class="inline-flex items-center text-secondary font-medium hover:underline">
+              使用工具 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 工具卡片 5 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-40 bg-secondary/10 flex items-center justify-center">
+            <i class="fa fa-certificate text-6xl text-secondary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">会计技能证书生成器</h3>
+            <p class="text-neutral-600 mb-4">根据学习进度和测试成绩，生成个性化的会计技能证书，记录学习成果。</p>
+            <a href="#" class="inline-flex items-center text-secondary font-medium hover:underline">
+              生成证书 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 工具卡片 6 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+          <div class="h-40 bg-secondary/10 flex items-center justify-center">
+            <i class="fa fa-file-text-o text-6xl text-secondary"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3">财务凭证处理系统</h3>
+            <p class="text-neutral-600 mb-4">模拟真实企业的财务凭证处理流程，学习凭证的填制、审核和归档等操作。</p>
+            <a href="#" class="inline-flex items-center text-secondary font-medium hover:underline">
+              进入系统 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 学习资源 -->
+  <section id="resources" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-neutral-800 mb-4">学习资源</h2>
+        <p class="text-lg text-neutral-600 max-w-2xl mx-auto">丰富的学习资料和工具，助力会计知识掌握</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 视频教程 -->
+        <div class="bg-white rounded-xl p-6 border border-neutral-200 hover:shadow-lg transition-all">
+          <div class="flex items-center mb-6">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <i class="fa fa-video-camera text-2xl"></i>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold">视频教程</h3>
+              <p class="text-neutral-500">45+ 课时视频</p>
+            </div>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>会计基础概念讲解</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>财务报表编制实战</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>会计软件操作演示</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>案例分析与讨论</span>
+            </li>
+          </ul>
+          <a href="#" class="mt-6 inline-block px-5 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+            查看全部 <i class="fa fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+        
+        <!-- 电子书籍 -->
+        <div class="bg-white rounded-xl p-6 border border-neutral-200 hover:shadow-lg transition-all">
+          <div class="flex items-center mb-6">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <i class="fa fa-book text-2xl"></i>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold">电子书籍</h3>
+              <p class="text-neutral-500">20+ 专业书籍</p>
+            </div>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>《会计学原理》</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>《财务报表分析》</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>《管理会计入门》</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>《会计信息化教程》</span>
+            </li>
+          </ul>
+          <a href="#" class="mt-6 inline-block px-5 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+            查看全部 <i class="fa fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+        
+        <!-- 在线测试 -->
+        <div class="bg-white rounded-xl p-6 border border-neutral-200 hover:shadow-lg transition-all">
+          <div class="flex items-center mb-6">
+            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <i class="fa fa-pencil-square-o text-2xl"></i>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold">在线测试</h3>
+              <p class="text-neutral-500">100+ 练习题</p>
+            </div>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>章节小测</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>模拟考试</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>错题解析</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fa fa-check-circle text-green-500 mr-2"></i>
+              <span>能力评估</span>
+            </li>
+          </ul>
+          <a href="#" class="mt-6 inline-block px-5 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+            开始测试 <i class="fa fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于实习 -->
+  <section id="about" class="py-20 bg-neutral-100">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-neutral-800 mb-4">关于会计专业认知实习</h2>
+        <p class="text-lg text-neutral-600 max-w-2xl mx-auto">了解实习目标、内容和预期成果</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold mb-6 text-neutral-800">实习目标</h3>
+          <p class="text-neutral-700 mb-6">
+            本实习项目旨在帮助会计专业学生建立对会计职业的全面认知，通过系统的课程学习和实践操作，掌握会计基本理论和技能，培养职业素养和创新能力，为未来的专业学习和职业发展奠定坚实基础。
+          </p>
+          
+          <h3 class="text-2xl font-bold mb-6 text-neutral-800">预期成果</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <div class="mt-1 mr-4 text-primary">
+                <i class="fa fa-check-circle text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">掌握会计基础知识</h4>
+                <p class="text-neutral-600">理解会计基本概念、原则和方法，熟悉财务报表的编制与分析。</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="mt-1 mr-4 text-primary">
+                <i class="fa fa-check-circle text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">具备实践操作能力</h4>
+                <p class="text-neutral-600">能够运用会计软件处理日常会计业务，熟练操作财务凭证、账簿和报表。</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="mt-1 mr-4 text-primary">
+                <i class="fa fa-check-circle text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">培养职业素养</h4>
+                <p class="text-neutral-600">了解会计职业道德规范，培养严谨、细致、负责的工作态度。</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="mt-1 mr-4 text-primary">
+                <i class="fa fa-check-circle text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">制定职业规划</h4>
+                <p class="text-neutral-600">明确会计职业发展路径，制定个人职业发展计划，增强职业竞争力。</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-xl overflow-hidden shadow-xl">
+          <img src="https://picsum.photos/seed/accounting-team/800/600" alt="会计实习团队" class="w-full h-auto">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4 text-neutral-800">实习安排</h3>
+            <div class="space-y-4">
+              <div class="flex">
+                <div class="w-24 text-neutral-500">时间：</div>
+                <div>2025年9月 - 2025年12月</div>
+              </div>
+              <div class="flex">
+                <div class="w-24 text-neutral-500">形式：</div>
+                <div>线上课程学习 + 虚拟企业实践</div>
+              </div>
+              <div class="flex">
+                <div class="w-24 text-neutral-500">对象：</div>
+                <div>会计专业大一、大二学生</div>
+              </div>
+              <div class="flex">
+                <div class="w-24 text-neutral-500">考核：</div>
+                <div>在线测试 + 实践项目 + 实习报告</div>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <a href="#" class="inline-block px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                报名参加 <i class="fa fa-paper-plane ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-neutral-800 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div>
+          <div class="flex items-center space-x-2 mb-6">
+            <i class="fa fa-calculator text-2xl text-accent"></i>
+            <span class="text-xl font-bold">会计专业认知实习</span>
+          </div>
+          <p class="text-neutral-400 mb-6">
+            通过实践探索会计领域，掌握专业技能，开启职业发展新篇章。
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+              <i class="fa fa-weixin text-xl"></i>
+            </a>
+            <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+              <i class="fa fa-weibo text-xl"></i>
+            </a>
+            <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+              <i class="fa fa-github text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-6">快速链接</h3>
+          <ul class="space-y-3">
+            <li><a href="#home" class="text-neutral-400 hover:text-white transition-colors">首页</a></li>
+            <li><a href="#courses" class="text-neutral-400 hover:text-white transition-colors">课程内容</a></li>
+            <li><a href="#lesson2" class="text-neutral-400 hover:text-white transition-colors">第二次课详情</a></li>
+            <li><a href="#resources" class="text-neutral-400 hover:text-white transition-colors">学习资源</a></li>
+            <li><a href="#about" class="text-neutral-400 hover:text-white transition-colors">关于实习</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-6">联系我们</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fa fa-map-marker mt-1 mr-3 text-accent"></i>
+              <span class="text-neutral-400">北京市海淀区中关村南大街5号</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-phone mt-1 mr-3 text-accent"></i>
+              <span class="text-neutral-400">010-12345678</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-envelope mt-1 mr-3 text-accent"></i>
+              <span class="text-neutral-400">contact@accounting-internship.com</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold mb-6">订阅更新</h3>
+          <p class="text-neutral-400 mb-4">
+            订阅我们的通讯，获取最新的实习动态和学习资源。
+          </p>
+          <form class="space-y-3">
+            <div>
+              <input type="email" placeholder="您的邮箱地址" class="w-full px-4 py-2 rounded-lg bg-neutral-700 border border-neutral-600 text-white focus:outline-none focus:ring-2 focus:ring-accent">
+            </div>
+            <button type="submit" class="w-full px-4 py-2 bg-accent hover:bg-accent/90 text-white rounded-lg font-medium transition-colors">
+              订阅 <i class="fa fa-paper-plane ml-2"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-neutral-700 pt-8 text-center text-neutral-500 text-sm">
+        <p>&copy; 2025 会计专业认知实习平台. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 导航栏滚动效果
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow-md');
+        header.classList.remove('py-3', 'shadow-sm');
+      } else {
+        header.classList.add('py-3', 'shadow-sm');
+        header.classList.remove('py-2', 'shadow-md');
+      }
+    });
+    
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuToggle.innerHTML = mobileMenu.classList.contains('hidden') 
+        ? '<i class="fa fa-bars text-xl"></i>' 
+        : '<i class="fa fa-times text-xl"></i>';
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        // 关闭移动端菜单
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          menuToggle.innerHTML = '<i class="fa fa-bars text-xl"></i>';
+        }
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // 课程卡片动画效果
+    const courseCards = document.querySelectorAll('.hover-scale');
+    courseCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('shadow-xl');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('shadow-xl');
+      });
+    });
+  </script>
+</body>
+</html>
+    
